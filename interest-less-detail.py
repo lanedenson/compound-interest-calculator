@@ -1,4 +1,3 @@
-
 print("\nCompound Interest Calculator")
 
 while True:
@@ -14,11 +13,9 @@ while True:
 
     #Data has been gathered, let's do the math:
 
-    future_value = (principal * ((1 + (interest_rate / compounded)) ** (compounded * time)))
+    print(f"The total future value of the investment is ${(principal * ((1 + (interest_rate / compounded)) ** (compounded * time))):,.2f}.\n")
 
-    print(f"The total future value of the investment is ${future_value:,.2f}.\n")
-
-    try_again = input("Would you like to try again (y to try again, any other key to exit)?")
+    try_again = input("Type Y to try again; any other key to exit: ")
 
     if try_again != "y":
         print("\nGoodbye!\n")

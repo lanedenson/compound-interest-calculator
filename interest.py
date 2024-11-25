@@ -1,4 +1,3 @@
-
 print("\nCompound Interest Calculator")
 
 while True:
