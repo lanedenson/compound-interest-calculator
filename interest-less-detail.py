@@ -5,7 +5,7 @@ while True:
     #First, let's gather the information about the investment.
     principal = float(input("What is the initial investment (or \"principal\") amount? "))
 
-    interest_rate = float(input("What is the interest rate? ")) / 100
+    interest_rate = float(input("What is the interest rate? "))
 
     compounded = int(input("How often will this be compunded in a year? "))
 
@@ -13,7 +13,7 @@ while True:
 
     #Data has been gathered, let's do the math:
 
-    print(f"The total future value of the investment is ${(principal * ((1 + (interest_rate / compounded)) ** (compounded * time))):,.2f}.\n")
+    print(f"The total future value of the investment is ${(principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))):,.2f}.\n")
 
     try_again = input("Type Y to try again; any other key to exit: ")
 
