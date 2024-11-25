@@ -1,9 +1,9 @@
 # Compound Interest Calculator
-I've been teaching my kid about compound interest and thought I would use a simple Python script to walk him through the math step by step, and also give me some exposure to creating Python scripts without having AI do it for me. 
+I've been teaching my kid about compound interest and thought I would use a simple Python script to walk him through the math step by step.
 
 My first pass was meant to walk through each step of the calculation to show how the math is done. 
 
-I created a second version that does the math in a single calculation 
+I created a second version that does the math in a single calculation.
 
 Next, I will convert this to JavaScript/HTML to make it a bit more user friendly. 
 
