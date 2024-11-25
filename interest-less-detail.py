@@ -1,3 +1,6 @@
+def future_value(principal, interest_rate, compounded, time):
+    return principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))
+
 print("\nCompound Interest Calculator")
 
 while True:
@@ -13,7 +16,7 @@ while True:
 
     #Data has been gathered, let's do the math:
 
-    print(f"The total future value of the investment is ${(principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))):,.2f}.\n")
+    print(f"The total future value of the investment is ${future_value(principal, interest_rate, compounded, time):,.2f}.\n")
 
     try_again = input("Type Y to try again; any other key to exit: ")
 
