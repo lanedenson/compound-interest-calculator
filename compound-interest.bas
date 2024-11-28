@@ -60,7 +60,7 @@
 300 print"for a total of $";z
 310 gosub 1000
 320 input"press y and enter to try again";again$
-330 if again$="y" then goto 10
+330 if again$="y" then goto 11
 340 if again$<>"y" then print : print "goodbye!"
 400 end
 1000 rem **subr: pause&print blank line
