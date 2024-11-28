@@ -1,18 +1,45 @@
+#Functions for floating and integer inputs; check for valid values and strip unneeded characters
+def get_positive_float(prompt):
+    while True:
+        value = input(prompt)
+        value = value.replace(',', '').replace('$', '').replace('%', '')
+        try:
+            value = float(value)
+            if value < 0:
+                print("Please enter a number greater than 0.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a valid number.")
+            
+def get_positive_int(prompt):
+    while True:
+        value = input(prompt)
+        try:
+            value = int(value)
+            if value < 0:
+                print("Please enter a number greater than 0.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a valid number.")
+
+
 print("\nCompound Interest Calculator")
 
 while True:
     print("\n")
     #First, let's gather the information about the investment.
-    principal = float(input("What is the initial investment (or \"principal\") amount? "))
+    principal = get_positive_float("What is the initial investment (or \"principal\") amount? ")
     print(f"You entered: ${principal:,.2f}\n")
 
-    interest_rate = float(input("What is the interest rate? ")) / 100
+    interest_rate = get_positive_float("What is the interest rate? ") / 100
     print(f"You entered: {100 * interest_rate}% interest rate.\n")
 
-    compounded = int(input("How often will this be compunded in a year? "))
+    compounded = get_positive_int("How often will this be compounded in a year? ")
     print(f"You entered:",compounded,"time(s) a year.\n")
 
-    time = int(input("How long will this be invested (in years)? "))
+    time = get_positive_int("How long will this be invested (in years)? ")
     print(f"You entered:",time,"years.\n")
 
     #Data has been gathered, let's do the math next.

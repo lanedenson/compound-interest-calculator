@@ -1,20 +1,44 @@
+#Function for calculating compounded interest
 def future_value(principal, interest_rate, compounded, time):
     return principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))
+
+#Functions for floating and integer inputs; check for valid values and strip unneeded characters
+def get_positive_float(prompt):
+    while True:
+        value = input(prompt)
+        value = value.replace(',', '').replace('$', '').replace('%', '')
+        try:
+            value = float(value)
+            if value < 0:
+                print("Please enter a number greater than 0.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a valid number.")
+            
+def get_positive_int(prompt):
+    while True:
+        value = input(prompt)
+        try:
+            value = int(value)
+            if value < 0:
+                print("Please enter a number greater than 0.")
+            else:
+                return value
+        except ValueError:
+            print("Please enter a valid number.")
 
 print("\nCompound Interest Calculator")
 
 while True:
     print("\n")
-    #First, let's gather the information about the investment.
-    principal = float(input("What is the initial investment (or \"principal\") amount? "))
+    principal = get_positive_float("What is the initial investment (or \"principal\") amount? ")
 
-    interest_rate = float(input("What is the interest rate? "))
+    interest_rate = get_positive_float("What is the interest rate? ")
 
-    compounded = int(input("How often will this be compunded in a year? "))
+    compounded = get_positive_int("How often will this be compounded in a year? ")
 
-    time = int(input("How long will this be invested (in years)? "))
-
-    #Data has been gathered, let's do the math:
+    time = get_positive_int("How long will this be invested (in years)? ")
 
     print(f"The total future value of the investment is ${future_value(principal, interest_rate, compounded, time):,.2f}.\n")
 
