@@ -1,10 +1,14 @@
-#Function for calculating compounded interest
 def future_value(principal: float, interest_rate: float, compounded: int, time: int) -> float:
-    '''Calculate the future value based on inputs. Set float and int datatypes accordingly.
-    '''
+    '''Calculate the future value based on inputs. Set float and int datatypes accordingly.'''
     return principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))
 
 def get_positive_float(prompt):
+    '''Prompt for floating values (e.g. principal and interest rate)
+    
+    Return error if value is less than 0 or if invalid characters are entered
+    
+    Strip out anticipated characters (&,%)
+    '''
     while True:
         value = input(prompt)
         value = value.replace(',', '').replace('$', '').replace('%', '')
@@ -18,6 +22,10 @@ def get_positive_float(prompt):
             print("Please enter a valid number.")
             
 def get_positive_int(prompt):
+    '''Prompt for integer values (e.g. times compounded and length of investment)
+    
+    Return error if value is less than 0 or if invalid characters are entered
+    '''
     while True:
         value = input(prompt)
         try:
