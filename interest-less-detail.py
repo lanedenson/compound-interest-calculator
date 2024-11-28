@@ -1,8 +1,9 @@
 #Function for calculating compounded interest
-def future_value(principal, interest_rate, compounded, time):
+def future_value(principal: float, interest_rate: float, compounded: int, time: int) -> float:
+    '''Calculate the future value based on inputs. Set float and int datatypes accordingly.
+    '''
     return principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))
 
-#Functions for floating and integer inputs; check for valid values and strip unneeded characters
 def get_positive_float(prompt):
     while True:
         value = input(prompt)

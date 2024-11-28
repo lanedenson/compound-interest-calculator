@@ -1,5 +1,10 @@
-#Functions for floating and integer inputs; check for valid values and strip unneeded characters
-def get_positive_float(prompt):
+def get_positive_float(prompt: str):
+    '''Prompt for floating values (e.g. principal and interest rate)
+    
+    Return error if value is less than 0 or if invalid characters are entered
+    
+    Strip out anticipated characters (&,%)
+    '''
     while True:
         value = input(prompt)
         value = value.replace(',', '').replace('$', '').replace('%', '')
@@ -12,7 +17,11 @@ def get_positive_float(prompt):
         except ValueError:
             print("Please enter a valid number.")
             
-def get_positive_int(prompt):
+def get_positive_int(prompt: str):
+    '''Prompt for integer values (e.g. times compounded and length of investment)
+    
+    Return error if value is less than 0 or if invalid characters are entered
+    '''
     while True:
         value = input(prompt)
         try:
@@ -37,10 +46,10 @@ while True:
     print(f"You entered: {100 * interest_rate}% interest rate.\n")
 
     compounded = get_positive_int("How often will this be compounded in a year? ")
-    print(f"You entered:",compounded,"time(s) a year.\n")
+    print(f"You entered: {compounded} time(s) a year.\n")
 
     time = get_positive_int("How long will this be invested (in years)? ")
-    print(f"You entered:",time,"years.\n")
+    print(f"You entered: {time} years.\n")
 
     #Data has been gathered, let's do the math next.
     print("Great! Let's walk through the calculation:\n")
