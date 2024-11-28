@@ -28,7 +28,7 @@ while True:
     print(f"The growth factor per compounding period is the periodic interest rate ({periodic_interest_rate}) plus 1, or {growth_factor}.\n")
 
     compound_growth_factor = growth_factor ** times_compounded
-    print(f"The compound growth factor is the growth factor {growth_factor} raised to the power of {times_compounded}, the times compounded, for a total of {compound_growth_factor}.\n")
+    print(f"The compound growth factor is the growth factor {growth_factor} raised to the power of {times_compounded}, the times compounded, which equals {compound_growth_factor}.\n")
 
     future_value = round(principal * compound_growth_factor, 2)
     print(f"Finally, we calculate the total future value (including the initial investment) by multiplying the principal of ${principal:,.2f} by the compound growth factor of {compound_growth_factor}.\n")
