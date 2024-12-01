@@ -1,31 +1,19 @@
-def get_positive_float(prompt: str):
-    '''Prompt for floating values (e.g. principal and interest rate)
-    
-    Return error if value is less than 0 or if invalid characters are entered
-    
-    Strip out anticipated characters (&,%)
+#Compound Interest Calculator
+
+#Define the input functions
+def get_positive_value(prompt: str, value_type: type, strip_chars: list = None):
+    '''Validating input: checking for numerals only, removing empty trailing or leading characters, stripping out anticipated characters
     '''
     while True:
-        value = input(prompt)
-        value = value.replace(',', '').replace('$', '').replace('%', '')
+        value = input(prompt).strip()
+        if strip_chars:
+                for char in strip_chars:
+                    value = value.replace(char, '')
+        if not value:
+            print("Please enter a value.")
+            continue
         try:
-            value = float(value)
-            if value < 0:
-                print("Please enter a number greater than 0.")
-            else:
-                return value
-        except ValueError:
-            print("Please enter a valid number.")
-            
-def get_positive_int(prompt: str):
-    '''Prompt for integer values (e.g. times compounded and length of investment)
-    
-    Return error if value is less than 0 or if invalid characters are entered
-    '''
-    while True:
-        value = input(prompt)
-        try:
-            value = int(value)
+            value = value_type(value)
             if value < 0:
                 print("Please enter a number greater than 0.")
             else:
@@ -33,22 +21,27 @@ def get_positive_int(prompt: str):
         except ValueError:
             print("Please enter a valid number.")
 
+def get_float(prompt: str):
+    return get_positive_value(prompt, float, strip_chars=[',', '$', '%'])
 
-print("\nCompound Interest Calculator")
+def get_integer(prompt: str):
+    return get_positive_value(prompt, int)
 
+#Start the input and calculation loop
 while True:
+    print("\nCompound Interest Calculator")
     print("\n")
     #First, let's gather the information about the investment.
-    principal = get_positive_float("What is the initial investment (or \"principal\") amount? ")
+    principal = get_float("What is the initial investment (or \"principal\") amount? ")
     print(f"You entered: ${principal:,.2f}\n")
 
-    interest_rate = get_positive_float("What is the interest rate? ") / 100
+    interest_rate = get_float("What is the interest rate? ") / 100
     print(f"You entered: {100 * interest_rate}% interest rate.\n")
 
-    compounded = get_positive_int("How often will this be compounded in a year? ")
+    compounded = get_integer("How often will this be compounded in a year? ")
     print(f"You entered: {compounded} time(s) a year.\n")
 
-    time = get_positive_int("How long will this be invested (in years)? ")
+    time = get_integer("How long will this be invested (in years)? ")
     print(f"You entered: {time} years.\n")
 
     #Data has been gathered, let's do the math next.
@@ -70,7 +63,7 @@ while True:
     print(f"Finally, we calculate the total future value (including the initial investment) by multiplying the principal of ${principal:,.2f} by the compound growth factor of {compound_growth_factor}.\n")
     print(f"...for a total of ${future_value:,.2f}.\n")
 
-    try_again = input("Would you like to try again (y to try again, any other key to exit)?")
+    try_again = input("Would you like to try again (y + 'return' to try again, any other key + 'return' to exit)?")
 
     if try_again != "y":
         print("\nGoodbye!\n")
