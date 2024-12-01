@@ -4,7 +4,7 @@ def future_value(principal: float, interest_rate: float, compounded: int, time: 
 
 #Define the input functions
 def get_positive_value(prompt: str, value_type: type, strip_chars: list = None):
-    '''Validating input: checking for numerals only, removing empty trailing or leading characters, stripping out anticipated characters
+    '''Validating input: checking for numerals only, removing blank trailing/leading characters, stripping out anticipated characters
     '''
     while True:
         value = input(prompt).strip()
@@ -29,11 +29,8 @@ def get_float(prompt: str):
 def get_integer(prompt: str):
     return get_positive_value(prompt, int)
 
-
-
-print("\nCompound Interest Calculator")
-
 while True:
+    print("\nCompound Interest Calculator")
     print("\n")
     principal = get_float("What is the initial investment (or \"principal\") amount? ")
 
