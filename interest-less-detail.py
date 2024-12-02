@@ -1,6 +1,10 @@
-def future_value(principal: float, interest_rate: float, compounded: int, time: int) -> float:
-    '''Calculate the future value based on inputs. Set float and int datatypes accordingly.'''
-    return principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))
+def future_value(principal: float, interest_rate: float, monthly_contribution: float, compounded: int, time: int) -> float:
+    '''Calculate the future value based on inputs. Set float and int datatypes accordingly.
+    THIS FORMULA DOES NOT WORK RIGHT - NEED TO COME BACK TO THIS
+    '''
+
+    return (principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))) + \
+        (monthly_contribution * (((1 + ((interest_rate / 100) / compounded) ** (compounded * time)) - 1) / (interest_rate / 100 / compounded)))
 
 #Define the input functions
 def get_positive_value(prompt: str, value_type: type, strip_chars: list = None):
@@ -36,11 +40,13 @@ while True:
 
     interest_rate = get_float("What is the interest rate? ")
 
+    monthly_contribution = get_float("How much will be contributed per month? ")
+
     compounded = get_integer("How often will this be compounded in a year? ")
 
     time = get_integer("How long will this be invested (in years)? ")
 
-    print(f"The total future value of the investment is ${future_value(principal, interest_rate, compounded, time):,.2f}.\n")
+    print(f"The total future value of the investment is ${future_value(principal, interest_rate, monthly_contribution, compounded, time):,.2f}.\n")
 
     try_again = input("Type Y to try again; any other key to exit: ")
 
