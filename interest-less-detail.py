@@ -1,6 +1,6 @@
 def future_value(principal: float, interest_rate: float, monthly_contribution: float, compounded: int, time: int) -> float:
     '''Calculate the future value based on inputs. Set float and int datatypes accordingly.
-    THIS FORMULA DOES NOT WORK RIGHT - NEED TO COME BACK TO THIS
+    THIS FORMULA DOES NOT WORK CORRECTLY - NEED TO COME BACK TO THIS
     '''
 
     return (principal * ((1 + ((interest_rate / 100) / compounded)) ** (compounded * time))) + \
@@ -48,7 +48,7 @@ while True:
 
     print(f"The total future value of the investment is ${future_value(principal, interest_rate, monthly_contribution, compounded, time):,.2f}.\n")
 
-    try_again = input("Type Y to try again; any other key to exit: ")
+    try_again = input("Would you like to try again (y + 'return' to try again, any other key + 'return' to exit)?")
 
     if try_again != "y":
         print("\nGoodbye!\n")
